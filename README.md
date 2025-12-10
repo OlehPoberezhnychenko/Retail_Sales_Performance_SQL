@@ -58,12 +58,6 @@ SELECT
     NTILE(5) OVER (ORDER BY last_order) as r_score, -- 5 is most recent
     NTILE(5) OVER (ORDER BY frequency) as f_score,  -- 5 is most frequent
     NTILE(5) OVER (ORDER BY monetary) as m_score    -- 5 is highest spend
-FROM customer_stats;
-```  
+FROM customer_stats; 
 
-## 📂 Project Structure
-text
-├── data/              # (Placeholder) Raw CSV files go here
-├── images/            # Generated visualization charts
-```
 
