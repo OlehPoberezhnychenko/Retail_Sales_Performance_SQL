@@ -58,6 +58,37 @@ SELECT
     NTILE(5) OVER (ORDER BY last_order) as r_score, -- 5 is most recent
     NTILE(5) OVER (ORDER BY frequency) as f_score,  -- 5 is most frequent
     NTILE(5) OVER (ORDER BY monetary) as m_score    -- 5 is highest spend
-FROM customer_stats; 
+FROM customer_stats;
+```
 
+## 📁 Project Structure
 
+```
+data/                    # (Placeholder) Raw CSV files go here
+images/                  # Generated visualization charts
+  ├── 01_order_status.png
+  ├── 02_top_categories.png
+  ├── 03_rfm_segments.png
+  └── 04_payment_methods.png
+olist_analysis.py        # Python script (Loads Data -> Runs SQL -> Plots Charts)
+queries.sql              # Raw SQL scripts for direct database execution
+README.md                # Project Documentation
+```
+
+## 🚀 How to Run
+
+1. Clone the repository.
+
+2. Download the [Olist Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and extract files into the `data/` folder.
+
+3. Install dependencies:
+
+```bash
+pip install pandas matplotlib seaborn
+```
+
+4. Run the analysis script:
+
+```bash
+python olist_analysis.py
+```
