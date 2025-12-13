@@ -10,7 +10,11 @@ The goal was to move beyond simple reporting and perform **Diagnostic Analytics*
 3.  *What products drive the Pareto principle?* (80/20 Rule)
 
 * **Data Source:** [Brazilian E-Commerce Public Dataset (Kaggle)](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
-* **Tech Stack:** Python (ETL & Visualization), Advanced SQL (Window Functions, CTEs).
+
+## 🛠 Tech Stack
+* **Python (3.10+):** Handles Data Loading (ETL) and Visualization.
+* **SQLite (Embedded):** Used as the SQL engine to execute complex queries (Window Functions, CTEs) directly on the raw CSV data without requiring external database setup.
+* **Libraries:** `pandas` (Data Manipulation), `matplotlib/seaborn` (Visualization), `sqlite3`.
 
 ## 🔍 Key Business Insights
 1.  **Customer Segmentation:** Using RFM analysis, we identified that **"Champions"** (High spend, recent purchase) make up less than 5% of the user base but drive disproportionate revenue.
@@ -60,35 +64,13 @@ SELECT
     NTILE(5) OVER (ORDER BY monetary) as m_score    -- 5 is highest spend
 FROM customer_stats;
 ```
-
-## 📁 Project Structure
-
-```
-data/                    # (Placeholder) Raw CSV files go here
-images/                  # Generated visualization charts
-  ├── 01_order_status.png
-  ├── 02_top_categories.png
-  ├── 03_rfm_segments.png
-  └── 04_payment_methods.png
-olist_analysis.py        # Python script (Loads Data -> Runs SQL -> Plots Charts)
-queries.sql              # Raw SQL scripts for direct database execution
-README.md                # Project Documentation
-```
-
 ## 🚀 How to Run
 
-1. Clone the repository.
+### 1) Get the dataset
+1. Download the dataset from Kaggle: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+2. Extract the CSV files into the `data/` folder (keep the original filenames).
 
-2. Download the [Olist Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and extract files into the `data/` folder.
-
-3. Install dependencies:
-
+### 2) Install dependencies
 ```bash
-pip install pandas matplotlib seaborn
-```
+pip install -r requirements.txt
 
-4. Run the analysis script:
-
-```bash
-python olist_analysis.py
-```
